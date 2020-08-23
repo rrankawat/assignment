@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* utility classes */
+.btn {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.1rem;
+}
+
+.btn-white {
+  background-color: #fff;
+}
+
+.btn-info {
+  padding: 0.6rem;
+  background-color: #37c3cc;
+  color: #fff;
+  border-radius: 0.2rem;
+}
+
+.btn-outline-info {
+  border: 1px solid #015b94;
+  color: #015b94;
+  border-radius: 0.2rem;
+  height: 1.7rem;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #19274c;
+  color: #fff;
+  padding: 0.7rem;
+}
+
+/* container */
+.container {
+  width: 95%;
+  margin: 2rem auto;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.page-nav {
+  list-style: none;
+  font-size: 0.8rem;
+}
+
+ul.page-nav li {
+  display: inline;
+}
+
+ul.page-nav li + li:before {
+  padding: 0.5rem;
+  color: black;
+  content: "/\00a0";
+}
+
+ul.page-nav li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+.filter {
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+}
+
+.filter label,
+.filter .from,
+.filter .to {
+  margin-right: 0.5rem;
+}
+
+.react-datepicker-wrapper input {
+  padding: 0.2rem 0.4rem;
+  width: 8rem;
+  position: relative;
+}
+
+.search-btn {
+  width: 2rem;
+  height: 1.6rem;
+  margin-right: 0.5rem;
+  padding-top: 0.2rem;
+  background-color: #39c2c7;
+  border: none;
+  border-radius: 0.2rem;
+}
+.search-btn:focus {
+  outline: none;
+}
+
+/* Trip Info */
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.info-list {
+  display: flex;
+}
+.info-list:first-child {
+  margin-bottom: 0.7rem;
+}
+
+.info-left-1,
+.info-left-2,
+.info-left-3,
+.info-left-4,
+.info-left-5,
+.info-left-6 {
+  width: 23rem;
+  padding: 0.6rem 0.8rem;
+  color: #fff;
+  margin-right: 0.7rem;
+  border-radius: 0.2rem;
+}
+
+.info-left-1 {
+  background-color: #29bdc1;
+}
+.info-left-2 {
+  background-color: #c29a3b;
+}
+.info-left-3 {
+  background-color: #015b94;
+}
+.info-left-4 {
+  background-color: #3ba84c;
+}
+.info-left-5 {
+  background-color: #964796;
+}
+.info-left-6 {
+  background-color: #6a5616;
+}
+
+.info-right {
+  display: flex;
+  background-color: #2f2f2f;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  color: #fff;
+  width: 14rem;
+  border-radius: 0.2rem;
+}
+
+/* items */
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+  background-color: #19274c;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.item .mid span:first-child {
+  color: #269cb4;
+}
+.item .mid span:last-child {
+  color: #9aa270;
+}
+
+.panel {
+  background-color: #fff;
+  padding: 0.8rem 1.6rem;
+}
+
+.table {
+  color: #fff;
+  font-size: 0.8rem;
+  width: 100%;
+  border-spacing: 0;
+}
+
+.thead-info {
+  background-color: #12bdda;
+}
+
+.thead-info tr td {
+  text-align: center;
+  padding: 0.3rem 1rem;
+  border: 1px solid #fff;
+}
+
+tbody {
+  color: #000;
+}
+
+tbody tr td {
+  border: 1px solid #ccc;
+  padding: 0.6rem 0.4rem;
+}
+
+tbody tr td:last-child {
+  text-align: center;
+}
