@@ -1,16 +1,64 @@
 import React from "react";
-import { ImMinus } from "react-icons/im";
+import { ImArrowRight } from "react-icons/im";
+import { FaMinus } from "react-icons/fa";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
-const TripItem = () => {
+const TripItem = ({ trip }) => {
+  const { startDay, endDay, tripLists } = trip;
+
+  const tripStartEnd = (start, end) => {
+    const s = new Date(parseInt(start));
+    const e = new Date(parseInt(end));
+    const diffHours = e.getHours() - s.getHours();
+    const diffMinutes = e.getMinutes() - s.getMinutes();
+
+    return `${s.toLocaleDateString()} at ${s.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })} - ${e.toLocaleDateString()} at ${e.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })} (${diffHours} Hrs ${diffMinutes} Minutes)`;
+  };
+
+  const getTime = (timestamp) => {
+    const date = new Date(parseInt(timestamp));
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${hours} Hrs ${minutes} mm`;
+  };
+
+  const tripExpenses = (expenses) => {
+    const total = expenses.map((exp) => exp.amount);
+    if (total.length > 0) {
+      return total.reduce((a, b) => a + b);
+    }
+    return 0;
+  };
+
+  const totalKM = () => {
+    const kms = tripLists.map((trip) => parseInt(trip.totalKm));
+    return kms.reduce((a, b) => a + b);
+  };
+
+  const totalExpense = () => {
+    const expenses = tripLists.map((trip) => tripExpenses(trip.tripExpenses));
+    return expenses.reduce((a, b) => a + b);
+  };
+
   return (
     <div>
       <div className="item">
-        <span className="start">Date</span>
+        <span className="start">Date: {tripStartEnd(startDay, endDay)}</span>
         <span className="mid">
-          <span>Total KM: 165 KM</span> <span>Total KM: 165 KM</span>
+          <span>Total KM: {totalKM()} KM</span>{" "}
+          <span>Total Expense: {totalExpense()}</span>
         </span>
         <span className="end">
-          <ImMinus />
+          <FaMinus />
         </span>
       </div>
       <div className="panel">
@@ -29,20 +77,36 @@ const TripItem = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>IFFOC CHOWK</td>
-              <td></td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>
-                <button className="btn btn-info">Movement Report</button>{" "}
-                <button className="btn btn-info">Stoppage Report</button>
-              </td>
-            </tr>
+            {tripLists.map((list, i) => (
+              <tr key={list.tripId}>
+                <td>{i + 1}</td>
+                <td>
+                  {list.startPointNode}{" "}
+                  <ImArrowRight size="10" style={{ color: "#0fbcdb" }} />{" "}
+                  {list.endPointNode}
+                </td>
+                <td>{list.driverName}</td>
+                <td>
+                  Rs. {tripExpenses(list.tripExpenses)}{" "}
+                  <BsFillInfoCircleFill
+                    size="14"
+                    style={{ color: "#0fbcdb", float: "right" }}
+                  />
+                </td>
+                <td>{list.totalKm} Km</td>
+                <td>{list.gpsDistance.toFixed(2)} Km</td>
+                <td>{getTime(list.tripRunningTime)}</td>
+                <td className="space-between">
+                  <span>{list.startODOMeter ? list.startODOMeter : "N/A"}</span>{" "}
+                  <ImArrowRight size="10" style={{ color: "#0fbcdb" }} />{" "}
+                  <span>{list.endODOMeter ? list.endODOMeter : "N/A"}</span>
+                </td>
+                <td>
+                  <button className="btn btn-info">Movement Report</button>{" "}
+                  <button className="btn btn-info">Stoppage Report</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -5,8 +5,8 @@ import { FaSearch } from "react-icons/fa";
 import { BiExport } from "react-icons/bi";
 
 const TripFilter = () => {
-  const [startDate, setStartDate] = useState(new Date("2014/02/08"));
-  const [endDate, setEndDate] = useState(new Date("2014/02/10"));
+  const [startDate, setStartDate] = useState(new Date("01/04/2020"));
+  const [endDate, setEndDate] = useState(new Date("01/07/2020"));
 
   return (
     <header className="header">
